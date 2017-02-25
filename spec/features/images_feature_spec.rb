@@ -48,7 +48,7 @@ feature 'images' do
     scenario 'lets a user view an image' do
       sign_up
       visit '/images'
-      click_link 'Show Sunny day'
+      click_link 'View image'
       expect(page).to have_content 'Sunny day'
       expect(current_path).to eq "/images/#{picture.id}"
     end

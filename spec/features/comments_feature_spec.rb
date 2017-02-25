@@ -11,7 +11,7 @@ feature 'reviewing' do
     click_button 'Post Comment'
 
     expect(current_path).to eq '/images'
-    click_link 'Show Sunny day'
+    click_link 'View image'
     expect(page).to have_content('looks nice')
   end
 end
