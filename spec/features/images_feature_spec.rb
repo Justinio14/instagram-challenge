@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'images' do
   context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
+      sign_up
       visit '/images'
       expect(page).to have_content 'No images yet'
       expect(page).to have_link 'New Image'
@@ -17,22 +18,23 @@ feature 'images' do
     end
 
     scenario 'display images' do
+      sign_up
       visit '/images'
       expect(page).to have_content('Sunny day')
       expect(page).not_to have_content('No images yet')
     end
   end
-  #
-  # context 'When not signed up ' do
-  #   scenario 'User tries to create a restaurant' do
-  #     visit '/restaurants'
-  #     click_link 'Add a restaurant'
-  #     expect(current_path).to eq '/users/sign_in'
-  #   end
-  #
+
+  context 'When not signed up' do
+    scenario 'User visits site and presses sign up' do
+      visit '/'
+      click_link 'Sign up'
+      expect(current_path).to eq '/users/sign_up'
+    end
+
       context 'an invalid image name' do
         scenario 'does not let you submit a name that is too short' do
-          # sign_up
+          sign_up
           visit '/images'
           click_link 'New Image'
           fill_in 'Name', with: 'th'
@@ -44,6 +46,7 @@ feature 'images' do
   context 'viewing images' do
     let!(:picture) {Image.create(name:'Sunny day')}
     scenario 'lets a user view an image' do
+      sign_up
       visit '/images'
       click_link 'Show Sunny day'
       expect(page).to have_content 'Sunny day'
@@ -51,6 +54,7 @@ feature 'images' do
     end
 
     scenario 'removes a restaurant when a user clicks a delete link' do
+      sign_up
       visit '/images'
       click_link 'Delete Sunny day'
       expect(page).not_to have_content 'Sunny day'
@@ -58,5 +62,5 @@ feature 'images' do
     end
   end
 
-
+end
 end

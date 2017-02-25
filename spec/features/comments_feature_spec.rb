@@ -4,6 +4,7 @@ feature 'reviewing' do
   before { Image.create name: 'Sunny day' }
 
   scenario 'allows user to leave a review' do
+    sign_up
     visit '/images'
     click_link 'Leave Comment'
     fill_in 'Comments', with: "looks nice"
