@@ -6,7 +6,7 @@ feature 'images' do
       sign_up
       visit '/images'
       expect(page).to have_content 'No images yet'
-      expect(page).to have_link 'New Image'
+      expect(page).to have_link 'Add new Image'
     end
   end
 
@@ -36,7 +36,7 @@ feature 'images' do
         scenario 'does not let you submit a name that is too short' do
           sign_up
           visit '/images'
-          click_link 'New Image'
+          click_link 'Add new Image'
           fill_in 'Name', with: 'th'
           click_button 'Create Image'
           expect(page).to have_content 'error'
@@ -52,15 +52,18 @@ feature 'images' do
       expect(page).to have_content 'Sunny day'
       expect(current_path).to eq "/images/#{picture.id}"
     end
-
+  end
     scenario 'removes a restaurant when a user clicks a delete link' do
       sign_up
-      visit '/images'
+      click_link 'Add new Image'
+      fill_in('Name', with: 'Sunny day')
+      fill_in('Picture', with: 'Sunny day')
+      click_button 'Create Image'
       click_link 'Delete Sunny day'
       expect(page).not_to have_content 'Sunny day'
       expect(page).to have_content 'Image successfully deleted'
     end
-  end
+
 
 end
 end

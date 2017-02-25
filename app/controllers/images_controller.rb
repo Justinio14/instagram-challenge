@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, :except => [:index, :show]
   # GET /images
   # GET /images.json
   def index
@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
+    @image = Image.new(name: image_params["name"], picture: image_params["picture"], user_id: current_user.id)
       if @image.save
         redirect_to images_path
       else
