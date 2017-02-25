@@ -5,12 +5,12 @@ feature 'reviewing' do
 
   scenario 'allows user to leave a review' do
     visit '/images'
-    click_link 'Review Sunny day'
+    click_link 'Leave Comment'
     fill_in 'Comments', with: "looks nice"
-    click_button 'Leave Comment'
+    click_button 'Post Comment'
 
     expect(current_path).to eq '/images'
-    click_link 'KFC'
+    click_link 'Show Sunny day'
     expect(page).to have_content('looks nice')
   end
 end

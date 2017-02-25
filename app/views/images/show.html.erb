@@ -9,6 +9,13 @@
   <strong>Picture:</strong>
   <%= @image.picture %>
 </p>
+<p>
+  <% if @comments.any? %>
+      <% @comments.each do |comment| %>
+        <%= comment.comments %>
+      <% end %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

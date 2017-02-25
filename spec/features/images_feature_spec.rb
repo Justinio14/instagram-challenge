@@ -54,7 +54,7 @@ feature 'images' do
       visit '/images'
       click_link 'Delete Sunny day'
       expect(page).not_to have_content 'Sunny day'
-      expect(page).to have_content 'Image was successfully deleted'
+      expect(page).to have_content 'Image successfully deleted'
     end
   end
 
