@@ -18,10 +18,14 @@
       <% if @images.any? %>
           <% @images.each do |image| %>
               <% if user_signed_in? %>
+
                 <tr>
                 <td><%= image.name %></td>
                 <td><%= image.picture %></td>
+
                 <td><%= link_to "View image", image %></td>
+                <td><%= link_to "like", image_likes_path(image), class: 'likes-link' %></td>
+                <td><span class='likes_count'><%= image.likes.count%> </span> <%= 'like'.pluralize(image.likes.count) %></td>
                 <td><%= link_to "Comment", new_image_comment_path(image) %></td>
                   <% if current_user.id == image.user_id %>
                     <td><%= link_to "Edit #{image.name}", edit_image_path(image) %></td>
