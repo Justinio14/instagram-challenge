@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<div class="center">
 <h1>Welcome to Snapshot</h1>
-
+</div>
   <body>
   <% if user_signed_in? %>
-    <p><%= link_to 'Add new Image', new_image_path %></p>
+    <!-- <p><%= link_to 'Add new Image', new_image_path %></p> -->
 
       <% if @images.any? %>
       <ul>
@@ -13,6 +13,7 @@
               <li>
                 <%= image.name %>
                 <%= image.picture %>
+                <%= image_tag image.image.url(:thumb) %>
                 <%= link_to "View", image %>
                 <%= link_to "like", image_likes_path(image), class: 'likes-link' %>
                 <span class='likes_count'><%= image.likes.count%> </span>

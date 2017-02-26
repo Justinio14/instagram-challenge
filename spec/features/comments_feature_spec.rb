@@ -9,7 +9,7 @@ feature 'reviewing' do
     fill_in 'Comments', with: "looks nice"
     click_button 'Post Comment'
     expect(current_path).to eq '/images'
-    click_link 'View image'
+    click_link 'View'
     expect(page).to have_content('looks nice')
   end
 end

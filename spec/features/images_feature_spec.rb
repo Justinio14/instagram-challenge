@@ -48,7 +48,7 @@ feature 'images' do
     scenario 'lets a user view an image' do
       sign_up
       visit '/images'
-      click_link 'View image'
+      click_link 'View'
       expect(page).to have_content 'Sunny day'
       expect(current_path).to eq "/images/#{picture.id}"
     end
@@ -59,7 +59,7 @@ feature 'images' do
       fill_in('Name', with: 'Sunny day')
       fill_in('Picture', with: 'Sunny day')
       click_button 'Create Image'
-      click_link 'Delete Sunny day'
+      click_link 'Delete'
       expect(page).not_to have_content 'Sunny day'
       expect(page).to have_content 'Image successfully deleted'
     end

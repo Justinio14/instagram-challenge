@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(name: image_params["name"], picture: image_params["picture"], user_id: current_user.id)
+    @image = Image.new(name: image_params["name"], picture: image_params["picture"], image_file_name:image_params["image_file_name"], user_id: current_user.id)
       if @image.save
         redirect_to images_path
       else
