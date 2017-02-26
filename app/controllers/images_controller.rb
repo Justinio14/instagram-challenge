@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
-    @image.update(restaurant_params)
+    @image.update(image_params)
     redirect_to '/images'
   end
 
@@ -58,6 +58,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:name, :picture)
+      params.require(:image).permit(:name, :picture, :image)
     end
 end

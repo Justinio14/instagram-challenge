@@ -8,35 +8,32 @@
   <tbody>
   <% if user_signed_in? %>
     <p><%= link_to 'Add new Image', new_image_path %></p>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Image</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+
       <% if @images.any? %>
+      <ul>
           <% @images.each do |image| %>
               <% if user_signed_in? %>
+              <li>
 
-                <tr>
-                <td><%= image.name %></td>
-                <td><%= image.picture %></td>
+                <%= image.name %>
+                <%= image.picture %>
 
-                <td><%= link_to "View image", image %></td>
-                <td><%= link_to "like", image_likes_path(image), class: 'likes-link' %></td>
-                <td><span class='likes_count'><%= image.likes.count%> </span> <%= 'like'.pluralize(image.likes.count) %></td>
-                <td><%= link_to "Comment", new_image_comment_path(image) %></td>
+
+              <%= link_to "View image", image %>
+                <%= link_to "like", image_likes_path(image), class: 'likes-link' %>
+                <span class='likes_count'><%= image.likes.count%> </span> <%= 'like'.pluralize(image.likes.count) %>
+                <%= link_to "Comment", new_image_comment_path(image) %>
                   <% if current_user.id == image.user_id %>
-                    <td><%= link_to "Edit #{image.name}", edit_image_path(image) %></td>
-                    <td><%= link_to "Delete #{image.name}", image, method: :delete %></td>
+                    <%= link_to "Edit #{image.name}", edit_image_path(image) %>
+                    <%= link_to "Delete #{image.name}", image, method: :delete %>
                   <% end %>
-                </tr>
+                </li>
             <% end %>
           <% end %>
       <% else %>
       <h1>No images yet</h1>
       <% end %>
+    </ul>
   <% end %>
   </tbody>
 </table>
