@@ -5,6 +5,7 @@
   <body>
   <% if user_signed_in? %>
     <p><%= link_to 'Add new Image', new_image_path %></p>
+
       <% if @images.any? %>
       <ul>
           <% @images.each do |image| %>
@@ -21,6 +22,7 @@
                     <%= link_to "Delete", image, method: :delete %>
                   <% end %>
               </li>
+
             <% end %>
           <% end %>
       <% else %>
