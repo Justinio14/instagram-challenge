@@ -12,13 +12,13 @@
               <li>
                 <%= image.name %>
                 <%= image.picture %>
-                <%= link_to "View image", image %>
+                <%= link_to "View", image %>
                 <%= link_to "like", image_likes_path(image), class: 'likes-link' %>
-                <span class='likes_count'><%= image.likes.count%> </span> <%= 'like'.pluralize(image.likes.count) %>
+                <span class='likes_count'><%= image.likes.count%> </span>
                 <%= link_to "Comment", new_image_comment_path(image) %>
                   <% if current_user.id == image.user_id %>
-                    <%= link_to "Edit #{image.name}", edit_image_path(image) %>
-                    <%= link_to "Delete #{image.name}", image, method: :delete %>
+                    <%= link_to "Edit", edit_image_path(image) %>
+                    <%= link_to "Delete", image, method: :delete %>
                   <% end %>
               </li>
             <% end %>
