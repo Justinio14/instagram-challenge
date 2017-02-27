@@ -1,24 +1,21 @@
-# README
+# Instagram-Challenge README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# getting started
 
-Things you may want to cover:
+* git clone https://github.com/Justinio14/instagram-challenge.git
 
-* Ruby version
+* bundle install
 
-* System dependencies
+* open in terminal
 
-* Configuration
+* Database creation - rake db drop db:create db:migrate
 
-* Database creation
+* start rails server in terminal rails s
 
-* Database initialization
+* open localhost:3000 in web browser
 
-* How to run the test suite
+* follow sign up instructions
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* test adding image / view / edit / delete 
 
 * ...
